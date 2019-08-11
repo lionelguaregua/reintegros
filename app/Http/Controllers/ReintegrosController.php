@@ -307,6 +307,16 @@ class ReintegrosController extends Controller
     	->where('iso',$isoNacionalidad)
     	->value('nombre');
 
+         $pir = DB::connection('mysql2')->table('afiliado_administrativo')
+        ->where('servicio_id',$servicio)
+        ->value('pir');
+
+ 
+         $aerolinea = DB::connection('mysql2')->table('afiliado_administrativo')
+        ->where('servicio_id',$servicio)
+        ->value('aerolinea');
+
+
 
     	$fechaOcurrencia = DB::connection('mysql2')->table('afiliado_datos')
     	->where('servicio',$servicio)
@@ -728,7 +738,7 @@ class ReintegrosController extends Controller
 
 
     
-    	return view('dashboard.ver', compact('registros','cliente','servicio','nombrePasajero','caso','voucher','nombrePasajero','planNombre','nombreSubservicio','formasPago','documento','fechaSolicitud','direccionEvento','montoSolicitado','moneda','paisResidencia','isoMoneda','paisOcurrencia','paisNacionalidad','fechaOcurrencia','nombreEstatus','observaciones','email','nombreEstado','montoAprobado','monedaPago','monedaPagoReal','fechaRealEnvio','fechaRealRecepcion','medioPagoId','fichaMedio','medioPago','fechaPagoReal','titularReal','paisPagoReal','ciudadPagoReal','provinciaPagoReal','estatusSolicitudListado','eventos','estatusAdministrativos','listadoMonedas','documentoPagoReal','bancoPagoReal','tipoCuentaReal','cuentaPagoReal','direccionBancoReal','swiftReal','direccionBancoDomiciladaReal','listadosEstados','formularioFicha','especificacionesEfectivo'));
+    	return view('dashboard.ver', compact('registros','cliente','servicio','nombrePasajero','caso','voucher','nombrePasajero','planNombre','nombreSubservicio','formasPago','documento','fechaSolicitud','direccionEvento','montoSolicitado','moneda','paisResidencia','isoMoneda','paisOcurrencia','paisNacionalidad','fechaOcurrencia','nombreEstatus','observaciones','email','nombreEstado','montoAprobado','monedaPago','monedaPagoReal','fechaRealEnvio','fechaRealRecepcion','medioPagoId','fichaMedio','medioPago','fechaPagoReal','titularReal','paisPagoReal','ciudadPagoReal','provinciaPagoReal','estatusSolicitudListado','eventos','estatusAdministrativos','listadoMonedas','documentoPagoReal','bancoPagoReal','tipoCuentaReal','cuentaPagoReal','direccionBancoReal','swiftReal','direccionBancoDomiciladaReal','listadosEstados','formularioFicha','especificacionesEfectivo','aerolinea','pir'));
 
     }
 

@@ -157,6 +157,22 @@ background-size: cover;
      
     
     </div>
+    @if($inputAdicional == 1)
+    <div class="col-md-2 mb-3">
+      <label for="pir">PIR <a href="" data-toggle="tooltip2" title="N° de reclamo emitido por la aerolinea"><i class="far fa-question-circle"></i><a/></label>
+      <div class="input-group">
+        <input type="text" class="form-control" id="pir" name="pir" placeholder="N° PIR">
+      </div>
+    </div>
+    <div class="col-md-2 mb-3">
+      <label for="aerolinea">Aerolinea <a href="" data-toggle="tooltip" title="Aerolinea involucrada en el evento"> <i class="far fa-question-circle"></i></a></label>
+      <div class="input-group">
+       
+        <input type="text" class="form-control" id="aerolinea" name="aerolinea" placeholder="Aerolinea" aria-describedby="inputGroupPrepend2">
+      </div>
+    </div>
+    @endif
+
     <div class="col-md-12">
       <label for="observaciones">Observaciones Adicionales</label>
       <textarea class="form-control" name="observaciones" maxlength="10000" placeholder="Si tiene alguna observación adicional que deba ser tomada en cuenta por el departamento de reintegros, indiquela en este cuadro..."></textarea>
@@ -216,6 +232,18 @@ function AgregarArchivos() {
     $(".attachment-row:last").find("input").val("");
 }
 </script>
+
+<script type="text/javascript">
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+<script type="text/javascript">
+  $(function () {
+  $('[data-toggle="tooltip2"]').tooltip()
+})
+</script>
+
 
 
 

@@ -219,6 +219,16 @@ $queryAfiliado = DB::connection('mysql')->select( 'SELECT '.$x1.' AS id1,'.$x2.'
                   ])
                   ->get();
 
+                  $inputAdicional = DB::connection('mysql')->table('operaciones_subservicio')
+      
+                  ->where([
+                    ['id',$subsercioId],
+                    ['is_deleted','<>',1]
+                  ])
+                  ->value('tipo_cobertura');
+
+
+
 
          
 
@@ -377,7 +387,7 @@ $planNombre = $nombrePlan[0]->nombre2;
 
 
 
-    	return view('formRequest', compact('voucher', 'caso', 'service','hash', 'afiliadoId', 'voucherid','subservicioDatos','paises','monedas','planNombre', 'nombrePax', 'idPax','validacionCaso'));
+    	return view('formRequest', compact('voucher', 'caso', 'service','hash', 'afiliadoId', 'voucherid','subservicioDatos','paises','monedas','planNombre', 'nombrePax', 'idPax','validacionCaso','inputAdicional'));
     }
 
 
@@ -397,7 +407,7 @@ $planNombre = $nombrePlan[0]->nombre2;
          'direccion' => 'required',
          'fecha_ocurrencia' => 'required',
          'email' => 'required',
-         'archivos' => 'mime:pdf,jpg,jpe,png,jpeg,gif'
+         'archivos' => 'mime:pdf,jpg,jpe,png,jpeg,gif|size:12000'
         
     ];
 
@@ -415,6 +425,10 @@ $planNombre = $nombrePlan[0]->nombre2;
      $email = $request->input('email');
      $observaciones = $request->input('observaciones');
      $archivos = $request->file('adjuntos');
+     $pir = $request->input('pir');
+     $aerolinea = $request->input('aerolinea');
+
+     
 
 
 if ($archivos != NULL) {
@@ -616,7 +630,9 @@ $queryAfiliado = DB::connection('mysql')->select( 'SELECT '.$x1.' AS id1,'.$x2.'
       	'moneda' => $moneda,
       	'cliente' => $clienteId,
         'estatus_solicitud' => 2,
-        'estado' => 0
+        'estado' => 0,
+        'pir' => $pir,
+        'aerolinea' => $aerolinea
       
       ]);
 

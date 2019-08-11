@@ -224,11 +224,22 @@ function AgregarCC() {
 				</tr>
 				<tr>
 					<th width="30%">Aerolinea</th>
-					<td><span></span></td>
+					<td><span>
+          @if($aerolinea == NULL)
+          -
+          @else
+          {{$aerolinea}}
+          @endif
+        </span></td>
 				</tr>
 				<tr>
 					<th width="30%">PIR</th>
-					<td><span></span></td>
+					<td>
+            @if($pir == NULL)
+          -
+          @else
+          {{$pir}}
+          @endif</td>
 				</tr>
 				<tr>
 					<th width="30%">Monto del gasto según pasajero</th>

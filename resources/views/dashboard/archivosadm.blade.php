@@ -46,7 +46,7 @@
 	@else
 
      <div class="col-md-6">
-<a href="{{asset('storage/administrativos-'.$id.'/'.$vi)}}" download><embed src="{{asset('storage/administrativos/'.$id.'/'.$vi)}}" width="500px" height="400px"> </embed> </a>
+<a href="{{asset(public/storage/administrativos-'.$id.'/'.$vi)}}" download><embed src="{{asset('public/storage/administrativos/'.$id.'/'.$vi)}}" width="500px" height="400px"> </embed> </a>
      </div>
 
 
