@@ -135,7 +135,7 @@ th{
         </button>
       </div>
       <div class="modal-body">
-        <form method="POST" action="">
+        <form method="POST" action="{{route('statusChange')}}">
           {{csrf_field()}}
         <label for="status">Estatus de usuario</label>
         <select name="status" id="status" class="form-control">
@@ -143,7 +143,7 @@ th{
         	<option value="1">Activo</option>
         	<option value="0">Inactivo</option>
         </select>
-        <input type="hidden" name="estatus" id="estatus">
+        <input type="hidden" name="estatus_id" id="estatus_id">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
@@ -177,11 +177,11 @@ th{
 
    var button = $(event.relatedTarget)
 
-   var urol_id = button.data('estatus')
+   var estatus_id = button.data('estatus')
 
    var modal = $(this)
 
-   modal.find('.modal-body #estatus').val(estatus);
+   modal.find('.modal-body #estatus_id').val(estatus_id);
 
   })
 

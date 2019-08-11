@@ -42,7 +42,7 @@ Auth::routes();
 
 
  
-Route::group(['middleware' => ['auth','verified']], function () {
+Route::group(['middleware' => ['auth','isActive']], function () {
 
 
 Route::get('/inicio', 'ReintegrosController@index')->name('inicio');
@@ -67,9 +67,14 @@ Route::get('/inicio/informaciones/{id}', 'VistasFormularioController@editarInfo'
 
 
 
+
+
+
 Route::POST('/inicio/usuarios/nuevo-usuario/create', 'Auth\RegisterController@create')->name('register');
 
 Route::POST('/inicio/usuarios/editar', 'UsersController@edit')->name('editUser');
+
+Route::POST('/inicio/usuarios/estatus', 'UsersController@statusChange')->name('statusChange');
 
 
 Route::POST('/inicio/agendados/nuevo', 'AgendadosController@scheduleCase')->name('agendarcaso');

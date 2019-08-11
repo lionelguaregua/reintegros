@@ -58,4 +58,22 @@ class UsersController extends Controller
 
      
     }
+
+
+    public function statusChange(Request $request)
+    {
+      $usuario = $request->input('estatus_id');
+
+      DB::connection('mysql2')
+      ->table('users')
+      ->where('id',$usuario)
+      ->update([
+          'status' => $request->input('status')
+      ]);   
+
+
+        Session::flash('usuario_editado', 'Se han actualizado exitosamente los datos del usuario');
+
+      return redirect()->route('usuarios');
+    }
 }
