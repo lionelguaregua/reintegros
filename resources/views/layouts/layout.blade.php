@@ -6,6 +6,7 @@
  <meta name="viewport"
  content="width=device-width, initial-scale=1, user-scalable=yes">
 <meta name="csrf-token" content="{{ csrf_token() }}">
+ <link rel="shortcut icon" href="{{asset('public/img/favicon.ico')}}" />
 	<link rel="stylesheet" type="text/css" href="{{ asset ('css/style.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset ('css/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset ('css/mdb.min.css') }}">

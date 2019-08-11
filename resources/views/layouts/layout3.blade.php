@@ -12,7 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset ('css/mdb.lite.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset ('css/addons/datatables.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset ('css/addons/datatables-select.min.css')}}">
-
+    <link rel="shortcut icon" href="{{asset('public/img/favicon.ico')}}" />
   <link rel="stylesheet" type="text/css" href="{{ asset ('css/nav.css')}}">
   <link rel="stylesheet" type="text/css" href="{{ asset ('css/bootstrap-select.css')}}">
   <link rel="stylesheet" type="text/css" href="{{ asset ('css/font-awesome.min.css')}}">
