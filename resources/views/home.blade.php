@@ -12,7 +12,7 @@
   	<div class="row">
 
   	<div class="col-md-6 text-center">
-  		<img src="{{asset('img/business-img.png')}}" width="70%">
+  		<img src="{{asset('public/img/business-img.png')}}" width="70%">
   	</div>
   	<div class="col-md-6">
   		<h1 class="font-weight-light">Reintegros en línea</h1>

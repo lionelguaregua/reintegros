@@ -6,7 +6,7 @@
 <div class="container">
   <div class="row align-items-center my-5">
       <div class="col-lg-7 text-center">
-        <img class="img-fluid rounded mb-4 mb-lg-0" src="{{asset('img/clip-art.png')}}" alt="" width="400">
+        <img class="img-fluid rounded mb-4 mb-lg-0" src="{{asset('public/img/clip-art.png')}}" alt="" width="400">
       </div>
       <!-- /.col-lg-8 -->
       <div class="col-lg-5">

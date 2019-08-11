@@ -56,7 +56,7 @@
 	@else
 
      <div class="col-md-6">
-    <a href="" download> <embed src="{{asset('storage/solicitud/'.$id.'/'.$vi)}}" width=     "500px" height="400px"> </embed> </a>
+    <a href="" download> <embed src="{{asset('public/storage/solicitud/'.$id.'/'.$vi)}}" width=     "500px" height="400px"> </embed> </a>
      </div>
 
 
