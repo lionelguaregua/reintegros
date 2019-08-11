@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers\Auth;
 
+
+use Illuminate\View\Middleware\ShareErrorsFromSession;
 use App\User;
+use Illuminate\Support\MessageBag;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+use Illuminate\Http\Request;
+use Session;
+use Mail;
 class RegisterController extends Controller
 {
     /*
@@ -20,6 +26,10 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
+    public function __construct()
+   {
+       $this->middleware('auth');
+   }
 
     use RegistersUsers;
 
@@ -28,32 +38,16 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/inicio/usuarios';
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-    }
+  
+  
 
     /**
      * Create a new user instance after a valid registration.
@@ -61,12 +55,31 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create(Request $request)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+
+         $validData = $this->validate($request, [
+            'email' => 'required|string|email|max:255|unique:users',
+             'name' => ['required', 'string', 'max:255'],
+            'password' => 'required|string|min:8|confirmed',
+            'status' => 'required'
         ]);
+          
+      
+              
+        $user = User::create([
+            'email' => $validData['email'],
+            'name' => $validData['name'],
+            'password' => Hash::make($validData['password']),
+            'status' => $validData['status'],
+        ]);
+
+
+        Session::flash('registrado', 'Usuario ha sido registrado de forma exitosa. El usuario debe verificar su dirección de Email para acceder al dashboard de reintegros ');
+
+      return redirect('/inicio/usuarios');
+
+
+        
     }
 }

@@ -61,12 +61,7 @@
       <li class="nav-item">
         <a class="nav-link" href="{{route('inicio')}}"><i class="fas fa-home"></i> Inicio</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href=""><i class="fas fa-calendar-alt"></i> Agendados  
-        
-          
-          </a>
-      </li>
+      
      
       <li class="nav-item">
         <a class="nav-link disabled" href="#"><i class="far fa-chart-bar"></i> Reportes</a>
@@ -76,11 +71,9 @@
           <i class="fas fa-cog"></i> Configuración
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Gestión de usuarios</a>
+          <a class="dropdown-item" href="{{route('usuarios')}}">Gestión de usuarios</a>
           <a class="dropdown-item" href="{{route('info')}}">Información de solicitud</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
+          
       </li>
       
      

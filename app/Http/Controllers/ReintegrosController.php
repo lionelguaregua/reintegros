@@ -21,24 +21,116 @@ class ReintegrosController extends Controller
 {
       public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'verified']);
     }
 
 
-    public function index(){
+    public function index(Request $request){
+
+        if ($request->get('busqueda') !== NULL) {
+
+            $search = $request->get('busqueda');
 
 
-    	$listado = DB::connection('mysql2')->table('afiliado_datos')
+           $listado =  DB::connection('mysql2')->table('afiliado_datos')
+
+        ->where('afiliado_datos.servicio','like', '%'.$search.'%')
+
+        ->orWhere('afiliado_datos.caso','like', '%'.$search.'%')
+
+        ->orWhere('afiliado_datos.documento','like', '%'.$search.'%')
+
+        ->orWhere('afiliado_datos.voucher','like', '%'.$search.'%')
+
+        ->orWhere('afiliado_datos.email','like', '%'.$search.'%')
+
+        ->join('afiliado_administrativo','afiliado_administrativo.servicio_id','=','afiliado_datos.servicio')
+    ->join('estatus_administrativo','estatus_administrativo.codigo','=','afiliado_administrativo.estado')
+    ->join('crm.clientes_corporativos','crm.clientes_corporativos.id','=','afiliado_administrativo.cliente')
+    ->join('estatus_solicitud','estatus_solicitud.codigo','=','afiliado_administrativo.estatus_solicitud')
+        ->select('afiliado_datos.nombre as nombre_afiliado','afiliado_datos.servicio','estatus_administrativo.nombre AS estado_casos','afiliado_datos.documento as identificacion_afiliado','afiliado_administrativo.agendado','afiliado_administrativo.estatus_solicitud', 'crm.clientes_corporativos.nombre_comercial AS nombre_cliente','afiliado_administrativo.voucher','afiliado_datos.fecha_solicitud','estatus_solicitud.estatus AS estatus_solicitud')
+        ->paginate(5);
+ 
+    $diaActual = Carbon::now()->toDateString();
+
+    
+    $casosDia = DB::connection('mysql2')
+    ->table('afiliado_administrativo')
+    ->where('agendado','=',$diaActual)
+    ->count();
+
+    $casosDiaLista = DB::connection('mysql2')
+    ->table('afiliado_administrativo')
+    ->where('agendado','=',$diaActual)
+    ->get();
+
+
+    $casosRetrasadosCuenta = DB::connection('mysql2')
+    ->table('afiliado_administrativo')
+    ->where('agendado','<',$diaActual)
+    ->count();
+
+
+    $casosRetrasadosLista = DB::connection('mysql2')
+    ->table('afiliado_administrativo')
+    ->where('agendado','<',$diaActual)
+    ->get();
+
+    $query = $listado;
+
+
+
+    return view('dashboard.inicio', compact('listado','casosDia','casosDiaLista','casosRetrasadosCuenta','casosRetrasadosLista','query','search'));
+
+
+
+
+        }else{
+
+    $diaActual = Carbon::now()->toDateString();
+
+
+
+    $listado = DB::connection('mysql2')->table('afiliado_datos')
 
     ->join('afiliado_administrativo','afiliado_administrativo.servicio_id','=','afiliado_datos.servicio')
-    ->select('*')
-    ->paginate(10);
+    ->join('estatus_administrativo','estatus_administrativo.codigo','=','afiliado_administrativo.estado')
+    ->join('crm.clientes_corporativos','crm.clientes_corporativos.id','=','afiliado_administrativo.cliente')
+    ->join('estatus_solicitud','estatus_solicitud.codigo','=','afiliado_administrativo.estatus_solicitud')
+        ->select('afiliado_datos.nombre as nombre_afiliado','afiliado_datos.servicio','estatus_administrativo.nombre AS estado_casos','afiliado_datos.documento as identificacion_afiliado','afiliado_administrativo.agendado','afiliado_administrativo.estatus_solicitud', 'crm.clientes_corporativos.nombre_comercial AS nombre_cliente','afiliado_administrativo.voucher','afiliado_datos.fecha_solicitud','estatus_solicitud.estatus AS estatus_solicitud')
+        
+
+        ->paginate(5);
+    
+  
+
+    $casosDia = DB::connection('mysql2')
+    ->table('afiliado_administrativo')
+    ->where('agendado','=',$diaActual)
+    ->count();
+
+    $casosDiaLista = DB::connection('mysql2')
+    ->table('afiliado_administrativo')
+    ->where('agendado','=',$diaActual)
+    ->get();
+
+
+    $casosRetrasadosCuenta = DB::connection('mysql2')
+    ->table('afiliado_administrativo')
+    ->where('agendado','<',$diaActual)
+    ->count();
+
+
+    $casosRetrasadosLista = DB::connection('mysql2')
+    ->table('afiliado_administrativo')
+    ->where('agendado','<',$diaActual)
+    ->get();
 
 
 
+	return view('dashboard.inicio', compact('listado','casosDia','casosDiaLista','casosRetrasadosCuenta','casosRetrasadosLista'));
 
-
-    	return view('dashboard.inicio', compact('listado'));
+    }
 
 
     }

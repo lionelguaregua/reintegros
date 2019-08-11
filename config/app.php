@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -162,6 +162,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         \Genert\BBCode\BBCodeServiceProvider::class,
+        RezaAr\Highcharts\Provider::class,
 
         /*
          * Package Service Providers...
@@ -227,6 +228,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'BBCode' => \Genert\BBCode\Facades\BBCode::class,
+        'Chart' => RezaAr\Highcharts\Facade::class,
 
     ],
 

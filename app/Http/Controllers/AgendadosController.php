@@ -22,16 +22,7 @@ class AgendadosController extends Controller
 
     public function __construct()
    {
-       $this->middleware('auth');
-   }
-
-
-
-
-
-   public function agendadosIndex(){
-    
-
+       $this->middleware(['auth', 'verified']);
    }
 
 

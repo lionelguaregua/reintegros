@@ -36,11 +36,13 @@ Route::PUT('user/{voucher}/case/{case}/service/{service}/{hash}/{afiliadoId}/{vo
 
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
 
+
+
 Auth::routes();
 
 
-
-Route::group(['middleware' => ['auth']], function () {
+ 
+Route::group(['middleware' => ['auth','verified']], function () {
 
 
 Route::get('/inicio', 'ReintegrosController@index')->name('inicio');
@@ -48,6 +50,11 @@ Route::get('/inicio', 'ReintegrosController@index')->name('inicio');
 Route::get('/inicio/search', 'ReintegrosController@search')->name('query');
 
 Route::get('/inicio/informaciones', 'VistasFormularioController@index')->name('info');
+
+Route::get('/inicio/usuarios', 'UsersController@index')->name('usuarios');
+
+Route::get('/inicio/usuarios/nuevo-usuario', 'UsersController@newUser')->name('nuevoUsuario');
+
 
 Route::get('/inicio/{id}', 'ReintegrosController@show')->name('ver');
 
@@ -59,6 +66,10 @@ Route::get('/inicio/{id}/archivosadmin', 'ReintegrosController@archivosAdm')->na
 Route::get('/inicio/informaciones/{id}', 'VistasFormularioController@editarInfo')->name('editarInfo');
 
 
+
+Route::POST('/inicio/usuarios/nuevo-usuario/create', 'Auth\RegisterController@create')->name('register');
+
+Route::POST('/inicio/usuarios/editar', 'UsersController@edit')->name('editUser');
 
 
 Route::POST('/inicio/agendados/nuevo', 'AgendadosController@scheduleCase')->name('agendarcaso');
