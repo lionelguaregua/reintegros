@@ -2024,7 +2024,7 @@ public function manualEvent(Request $request, $id)
         
 
 
-       $files = Storage::allFiles('solicitud/'.$id.'');
+       $files = Storage::allFiles('/storage/public/solicitud/'.$id.'');
       
     
        if ($files == []) {
