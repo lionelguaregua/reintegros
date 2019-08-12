@@ -2026,7 +2026,7 @@ public function manualEvent(Request $request, $id)
 
      //  $files = Storage::allFiles('/public/solicitud/'.$id.'');
 
-         $files = Storage::allFiles('/public/solicitud/');
+         $files = Storage::allFiles('/public/solicitud/'.$id.'/');
       
       dd($files);
     
