@@ -100,7 +100,7 @@ class ReintegrosController extends Controller
         ->select('afiliado_datos.nombre as nombre_afiliado','afiliado_datos.servicio','estatus_administrativo.nombre AS estado_casos','afiliado_datos.documento as identificacion_afiliado','afiliado_administrativo.agendado','afiliado_administrativo.estatus_solicitud', 'crm.clientes_corporativos.nombre_comercial AS nombre_cliente','afiliado_administrativo.voucher','afiliado_datos.fecha_solicitud','estatus_solicitud.estatus AS estatus_solicitud')
         
 
-        ->paginate(5);
+        ->paginate(10);
     
   
 

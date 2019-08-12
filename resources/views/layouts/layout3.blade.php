@@ -51,7 +51,7 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#"><img src="{{asset('img/blanco.png')}}" width="150"  class="d-inline-block align-top" alt=""></a>
+  <a class="navbar-brand" href="#"><img src="{{asset('public/img/blanco.png')}}" width="150"  class="d-inline-block align-top" alt=""></a>
  
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
