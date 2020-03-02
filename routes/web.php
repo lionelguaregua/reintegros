@@ -65,7 +65,11 @@ Route::get('/inicio/{id}/archivosadmin', 'ReintegrosController@archivosAdm')->na
 
 Route::get('/inicio/informaciones/{id}', 'VistasFormularioController@editarInfo')->name('editarInfo');
 
+Route::get('/reportes', 'ReportesController@index')->name('indexReportes');
 
+Route::post('/reportes/data', 'ReportesController@ajaxData')->name('ajaxData');
+
+//Route::get('/temporal', 'ReportesController@insertData')->name('insert');
 
 
 
@@ -110,9 +114,9 @@ Route::POST('/inicio/informaciones/{id}/docs', 'VistasFormularioController@edita
 
 
 
+
+
 Route::get('logout', 'Auth\LoginController@logout');
-
-
 
 
 

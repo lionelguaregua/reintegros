@@ -41,6 +41,7 @@
      <script src="{{asset('js/popper.min.js')}}"></script>
      <script src="{{asset('js/bootstrap.min.js')}}"></script>
      <script src="{{asset('js/bootstrap-select.js')}}"></script>
+     <script src="https://code.highcharts.com/highcharts.js"></script>
      <style type="text/css">
        .navbar {
         background-color: rgba(239, 146, 0, 0.5) !important;
@@ -64,7 +65,7 @@
       
      
       <li class="nav-item">
-        <a class="nav-link disabled" href="#"><i class="far fa-chart-bar"></i> Reportes</a>
+        <a class="nav-link" href="{{route('indexReportes')}}"><i class="far fa-chart-bar"></i> Reportes</a>
       </li>
        <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -150,14 +150,6 @@ $queryAfiliado = DB::connection('mysql')->select( 'SELECT '.$x1.' AS id1,'.$x2.'
 
 
 
-
-
-
-
-
-
-
-
        $clienteId = $queryAfiliado[0]->cliente_id13;
        
 
