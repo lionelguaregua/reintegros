@@ -49,6 +49,9 @@ Route::get('/inicio', 'ReintegrosController@index')->name('inicio');
 
 Route::get('/inicio/search', 'ReintegrosController@search')->name('query');
 
+
+
+
 Route::get('/inicio/informaciones', 'VistasFormularioController@index')->name('info');
 
 Route::get('/inicio/usuarios', 'UsersController@index')->name('usuarios');
@@ -66,6 +69,8 @@ Route::get('/inicio/{id}/archivosadmin', 'ReintegrosController@archivosAdm')->na
 Route::get('/inicio/informaciones/{id}', 'VistasFormularioController@editarInfo')->name('editarInfo');
 
 Route::get('/reportes', 'ReportesController@index')->name('indexReportes');
+
+Route::get('/reportes/search', 'ReportesController@indexFiltered')->name('queryReport');
 
 Route::post('/reportes/data', 'ReportesController@ajaxData')->name('ajaxData');
 
