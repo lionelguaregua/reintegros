@@ -28,7 +28,7 @@
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 <!--	<link rel="stylesheet" href="vanillabox/theme/bitter/vanillabox.css"> -->
 	
-	
+<script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
 
 <script src="{{asset('js/jquery.min.js')}}"></script>
   <script src="{{asset('js/jquery-ui.min.js')}}"></script>
@@ -113,7 +113,6 @@
   <script src="{{ asset ('js/addons/datatables-select.min.js')}}"></script>
 
 
-<script src="{{ asset('/vendors/ckeditor/ckeditor.js') }}"></script>
   
 </footer>
 </html>

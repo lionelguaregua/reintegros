@@ -558,7 +558,7 @@ function AgregarCC() {
           {{@csrf_field()}}
           <p>No sé enviaran adjuntos los documentos que se encuentran en la carpeta administrativa, verifica que se encuentren todos los archvios necesarios para el pago, así el departamento administrativo pordrá verificar toda la información</p>
           <label for="aclaratorias">Observaciones: </label>
-          <textarea class="ckeditor form-control" name="aclaratorias"></textarea>
+          <textarea id="ckeditor" class="form-control" name="aclaratorias"></textarea>
           <br>
           <label for="receptores">Enviar a:</label>
           <br>
@@ -1005,6 +1005,10 @@ function AgregarCC() {
     });
   } );
 </script>
+
+<script>
+                        CKEDITOR.replace( 'ckeditor' );
+                </script>
 
 
 @endsection
