@@ -26,6 +26,28 @@
 </div>
 @endif
 
+@foreach($view as $vi)
+
+@if($vi == NULL)
+
+
+@else
+
+
+<ul class="list-group">
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+  {{$vi}}
+    <a href="#" data-toggle="modal" data-target="#deleteDocAdm" data-archivoname="{{$vi}}"><i class="fas fa-trash" style="color:red;"></i></a>
+  </li>
+
+</ul>
+
+
+@endif
+
+@endforeach
+<br>
+
 <div class="row">
 
 
@@ -92,5 +114,26 @@ Regresar
     </div>
   </div>
 </div>
+
+@include('modals.deleteAdmDoc')
+
+
+<script type="text/javascript">
+  $('#deleteDocAdm').on('show.bs.modal', function (event) {
+
+
+   var button = $(event.relatedTarget)
+
+   var archivo_name = button.data('archivoname')
+
+   var modal = $(this)
+
+
+   modal.find('.modal-body #archivo_name').val(archivo_name);
+
+  })
+
+
+</script>
 
 @endsection

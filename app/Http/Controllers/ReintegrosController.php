@@ -2062,6 +2062,17 @@ public function manualEvent(Request $request, $id)
          return redirect()->back();
        }
 
+       public function deleteDocAdm(Request $request, $id) {
+
+
+        $filename = $request->input('archivo_name');
+
+        Storage::delete('public/administrativos/'.$id.'/'.$filename);
+
+
+         return redirect()->back();
+       }
+
 
        public function archivosAdm(Request $request, $id)
        {

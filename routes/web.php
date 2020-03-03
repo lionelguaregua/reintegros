@@ -67,6 +67,8 @@ Route::post('/inicio/{id}/archivos/delete', 'ReintegrosController@deleteDocPax')
 
 Route::get('/inicio/{id}/archivosadmin', 'ReintegrosController@archivosAdm')->name('archivosAdm');
 
+Route::post('/inicio/{id}/archivosadmin/delete', 'ReintegrosController@deleteDocAdm')->name('deleteDocAdm');
+
 
 Route::get('/inicio/informaciones/{id}', 'VistasFormularioController@editarInfo')->name('editarInfo');
 
