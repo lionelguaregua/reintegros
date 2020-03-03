@@ -38,7 +38,7 @@ class CambioEstado extends Mailable
     public function build()
     {
 
-         $email = $this->view('mails.estatus')->subject('Quantico servicios de asistencia | Su estatus de reembolso ha sido actualizado!')->from('atencion.cliente@quanticoservicios.com');
+         $email = $this->view('mails.estatus')->subject($this->ObjReintegros->voucher.' | '.$this->ObjReintegros->receiver)->from('atencion.cliente@quanticoservicios.com');
 
 if ($this->ObjReintegros->files != NULL) {
     foreach($this->ObjReintegros->files as $file){

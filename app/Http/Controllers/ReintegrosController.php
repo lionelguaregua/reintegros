@@ -761,8 +761,6 @@ class ReintegrosController extends Controller
     	'estatus_solicitud' => $request->input('estatus_solicitud')
     ]);
 
-
-
       
      if ($request->input('estatus_solicitud') == 2) {
 						$status = 'Recibido';
@@ -851,9 +849,15 @@ class ReintegrosController extends Controller
      	$i++;
      }
 
+     $voucher = DB::connection('mysql2')
+     ->table('afiliado_datos')
+     ->where('servicio',$id)
+     ->value('voucher');
+
 
       $objReintegros = new \stdClass();
       $objReintegros->nuevoEstado = $status;
+      $objReintegros->voucher = $voucher;
       $objReintegros->mensajeEstado = $mensaje;
       $objReintegros->sender = 'Departamento de Reintegros';
       $objReintegros->receiver = $nombrePasajero;
@@ -2028,7 +2032,7 @@ public function manualEvent(Request $request, $id)
 
          $files = Storage::allFiles('/public/solicitud/'.$id.'/');
       
-    
+        
     
        if ($files == []) {
 
@@ -2043,7 +2047,19 @@ public function manualEvent(Request $request, $id)
        }
 
 
+
         return view('dashboard.archivospax',compact('registros','view','id'));
+       }
+
+
+       public function deleteDocPax(Request $request, $id) {
+
+        $filename = $request->input('archivo_name');
+
+        Storage::delete('public/solicitud/'.$id.'/'.$filename);
+
+
+         return redirect()->back();
        }
 
 

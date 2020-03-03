@@ -35,6 +35,28 @@
     </div>
 @endif
 
+@foreach($view as $vi)
+
+@if($vi == NULL)
+
+
+@else
+
+
+<ul class="list-group">
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+  {{$vi}}
+    <a href="#" data-toggle="modal" data-target="#deleteDoc" data-archivoname="{{$vi}}"><i class="fas fa-trash" style="color:red;"></i></a>
+  </li>
+
+</ul>
+
+
+@endif
+
+@endforeach
+
+<br>
 <div class="row">
 
 	
@@ -54,6 +76,8 @@
      </div>
 
 	@else
+
+  
 
      <div class="col-md-6">
     <a href="{{asset('public/storage/solicitud/'.$id.'/'.$vi)}}" download> <embed src="{{asset('public/storage/solicitud/'.$id.'/'.$vi)}}" width=     "500px" height="400px"> </embed> </a>
@@ -104,7 +128,26 @@ Regresar
 </div>
 
 
+@include('modals.deletePaxDoc')
 
+
+<script type="text/javascript">
+  $('#deleteDoc').on('show.bs.modal', function (event) {
+
+
+   var button = $(event.relatedTarget)
+
+   var archivo_name = button.data('archivoname')
+
+   var modal = $(this)
+
+
+   modal.find('.modal-body #archivo_name').val(archivo_name);
+
+  })
+
+
+</script>
 
 
 

@@ -63,6 +63,8 @@ Route::get('/inicio/{id}', 'ReintegrosController@show')->name('ver');
 
 Route::get('/inicio/{id}/archivos', 'ReintegrosController@archivosPax')->name('archivospax');
 
+Route::post('/inicio/{id}/archivos/delete', 'ReintegrosController@deleteDocPax')->name('deleteDocPax');
+
 Route::get('/inicio/{id}/archivosadmin', 'ReintegrosController@archivosAdm')->name('archivosAdm');
 
 
